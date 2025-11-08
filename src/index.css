@@ -1,0 +1,261 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.calculator-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transition: background 0.6s ease-in-out;
+  position: relative;
+}
+
+/* 🌑 Dark Mode Background */
+.dark {
+  background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
+  color: #e0e0e0;
+}
+
+/* ☀️ Light Mode Background */
+.light {
+  background: linear-gradient(145deg, #d2d1d1, #bfbfbf, #ececec);
+  color: #222;
+}
+
+/* 💡 Floating Theme Toggle */
+.theme-toggle {
+  position: absolute;
+  top: 5vh;
+  right: 5vh;
+  z-index: 10;
+  background: #000;
+  text-align: center;
+  padding: 15px;
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+
+.theme-toggle:hover {
+  transform: rotate(60deg);
+}
+
+/* Theme Icons */
+.theme-icon {
+  font-size: 2rem;
+  transition: color 0.5s ease, transform 0.5s ease;
+}
+
+.sun {
+  color: #ffd95a;
+}
+
+.moon {
+  color: #ffdd00;
+  text-shadow: 1px 1px 5px #000000;
+}
+
+/* 💫 Calculator Box */
+.calculator-box {
+  padding: 40px;
+  border-radius: 35px;
+  width: 450px;
+  transition: all 0.6s ease;
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.1),
+    0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark & Light Box themes */
+.dark-box {
+  background: rgba(15, 25, 40, 0.8);
+  box-shadow: inset 0 0 40px rgb(31, 20, 48);
+}
+
+.light-box {
+  background-color: black;
+  box-shadow: inset 3px 3px 20px #d4d4d4;
+}
+
+/* 🧮 Display */
+.display {
+  text-align: right;
+  font-size: 2.6rem;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 25px;
+  overflow-x: auto;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.display::-webkit-scrollbar {
+  display: none;
+}
+
+/* Themed display */
+.dark-display {
+  background: rgba(20, 30, 50, 0.9);
+  color: #00ffff;
+  box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.light-display {
+  background: rgba(250, 250, 255, 0.85);
+  color: #1a1a1a;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Buttons Grid */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+/* Buttons Style */
+button {
+  padding: 22px;
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  font-weight: 500;
+}
+
+/* Dark buttons */
+.dark button {
+  background: rgba(45, 55, 80, 0.8);
+  color: #e0e0e0;
+  box-shadow: inset 0 0 5px rgb(193, 193, 193),
+    0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.dark button:hover {
+  background: rgba(60, 70, 100, 0.9);
+  color: #00ffff;
+  transform: scale(1.1);
+}
+
+/* Light buttons */
+.light button {
+  background: rgba(255, 255, 255, 0.9);
+  color: #090909;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05), 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.light button:hover {
+  background: #dfe9ff;
+  color: #000000;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 102, 255, 0.25);
+}
+
+/* Special buttons */
+.operator {
+  background-color: #0099ff !important;
+  color: white !important;
+}
+
+.clear {
+  background-color: #ff4e4e !important;
+  color: white !important;
+}
+
+.equals {
+  background-color: #00ffcc !important;
+  color: #0a0a0f !important;
+  font-weight: 700;
+  box-shadow: 0 0 25px rgba(0, 255, 204, 0.5);
+}
+
+.zero {
+  grid-column: span 2;
+}
+
+/* ✅ RESPONSIVENESS */
+
+/* 🖥 Medium screens (1024px and below) */
+@media (max-width: 1024px) {
+  .calculator-box {
+    width: 380px;
+    padding: 35px;
+  }
+
+  .display {
+    font-size: 2.3rem;
+  }
+
+  button {
+    padding: 20px;
+    font-size: 1.2rem;
+  }
+}
+
+/* 📱 Tablets (768px and below) */
+@media (max-width: 768px) {
+  .calculator-box {
+    width: 320px;
+    padding: 30px;
+  }
+
+  .display {
+    font-size: 2rem;
+  }
+
+  .theme-toggle {
+    top: 3vh;
+    right: 3vh;
+    padding: 12px;
+  }
+
+  .theme-icon {
+    font-size: 1.5rem;
+  }
+
+  button {
+    padding: 18px;
+    font-size: 1.1rem;
+  }
+}
+
+/* 📱 Small Mobiles (480px and below) */
+@media (max-width: 480px) {
+  .calculator-box {
+    width: 280px;
+    padding: 25px;
+    border-radius: 25px;
+  }
+
+  .display {
+    font-size: 1.8rem;
+  }
+
+  button {
+    padding: 16px;
+    font-size: 1rem;
+    border-radius: 12px;
+  }
+
+  .buttons {
+    gap: 10px;
+  }
+
+  .theme-toggle {
+    top: 2vh;
+    right: 2vh;
+    padding: 10px;
+  }
+
+  .theme-icon {
+    font-size: 1.3rem;
+  }
+}
